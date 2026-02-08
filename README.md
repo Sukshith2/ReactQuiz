@@ -13,7 +13,8 @@ This project is currently in the initial setup stage with the base structure and
 ## Current Status
 - React + Vite project initialized
 - Tailwind CSS configured
-- Basic folder structure created
+- Quiz questions data added
+- Basic quiz flow implemented
 
 ## Installation & Setup
 1. Clone the repository
