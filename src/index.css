@@ -112,3 +112,22 @@ body {
   background: #f55a98;
   color: #2c203d;
 }
+
+
+#question-time {
+  background: #9e5ef8;
+}
+
+#question-time::-webkit-progress-bar {
+  background: #6a558a;
+  border-radius: 9999px;
+}
+
+#question-time::-webkit-progress-value {
+  background: #9e5ef8;
+  border-radius: 9999px;
+}
+
+#question-time.answered::-webkit-progress-value {
+  background: #f8e59c;
+}
