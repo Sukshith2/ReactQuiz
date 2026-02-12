@@ -3,13 +3,14 @@ import completeImg from '../assets/quiz-complete.png';
 
 import QUESTIONS from '../question';
 import QuestionTimer from './QuestionTimer';
+import Answer from './Answer';
 
 const Quiz = () => {
 
     const [userAnswers, setUserAnswer] = useState([]);
     const [ansertState, setAnswerState] = useState('');
 
-    const ShuffledAnswer = useRef([]);
+    
     const  ouestionIndex = ansertState === '' ? userAnswers.length : userAnswers.length-1;
     const quizComplted = ouestionIndex === QUESTIONS.length;
     
@@ -45,42 +46,21 @@ const Quiz = () => {
         )
     }
 
-    if(!ShuffledAnswer === 0){
-        ShuffledAnswer.current = [...QUESTIONS[ouestionIndex].answers];
-        ShuffledAnswer.current.sort(() => Math.random() - 0.5)
-    }
+  
 
 
   return (
    <div className='max-w-6/12 m-auto p-8 bg-[linear-linear-gradient(180deg, #3e2a60 0%, #321061 100%) rounded-lg shadow-[1px_1px_8px_4px_rgba(12,5,32,0.6)] text-center ]'>
     <QuestionTimer key={ouestionIndex} timeOut={10000} onTimeOut={handleSkipAnswers}/>
+    
+       <div id="questions">
+            <h2 className='text-2xl font-bold mx-2 my-5 text-[#c1b2dd] text-center'>{QUESTIONS[ouestionIndex].text}</h2>
+            <Answer key={ouestionIndex} answer={QUESTIONS[ouestionIndex].answers} onSelect={handleAnswerSubmit} userAnswers={userAnswers[userAnswers.length-1]} 
+            ansertState={ansertState}/>
 
-     <div id="questions">
-         <h2 className='text-2xl font-bold mx-2 my-5 text-[#c1b2dd] text-center'>{QUESTIONS[ouestionIndex].text}</h2>
-         <ul id='answers'>
-            {ShuffledAnswer.current.map((answer) =>{
-                        const isSelected = userAnswers[userAnswers.length-1] === answer;
-                        let cssClases='';  
-                        
-                        if(ansertState === 'answerd' && isSelected){
-                            cssClases = 'selected'
-                        }
-
-                        if((ansertState === 'correct' || ansertState === 'wrong') && isSelected ){
-                            cssClases = ansertState;
-                        }
-
-                    return (
-                        <li key={answer} className='answer'>
-                        <button className={cssClases} 
-                        onClick={() => handleAnswerSubmit(answer)}>{answer}</button></li>
-                    )
-                })
-
-            }
-
-         </ul>
-    </div>
+       </div>
+  
+     
    </div>
   )
 }
