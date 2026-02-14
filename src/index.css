@@ -131,3 +131,15 @@ body {
 #question-time.answered::-webkit-progress-value {
   background: #f8e59c;
 }
+#summary .user-answer.correct {
+  color: #054e37;
+}
+
+#summary .user-answer.wrong {
+  color: #730b4b;
+}
+
+#summary .user-answer.skipped {
+  color: #d1baf2;
+  font-weight: normal;
+}
